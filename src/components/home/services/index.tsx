@@ -1,6 +1,5 @@
 import { IHome } from "@/interfaces/Home";
 import styles from "./styles.module.scss";
-import Container from "@/components/container/index";
 import Image from "next/image";
 
 const Services = ({ object }: IHome) => {
