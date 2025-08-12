@@ -8,11 +8,12 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export async function generateMetadata({
-  params: { slug },
+  params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
   try {
+    const { slug } = await params;
     const { objects }: IPage = await getPage(slug).catch(() => {
       return {
         title: "DevMotors - Sua oficina especializada!",
@@ -46,7 +47,8 @@ export async function generateMetadata({
   }
 }
 
-const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+const Page = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = await params;
   const { objects }: IPage = await getPage(slug);
 
   return (
